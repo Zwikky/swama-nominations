@@ -44,7 +44,18 @@
             margin-bottom: 15px;
         }
 
+        .form-signin select {
+            pointer-events: visible;
+        }
+/* 
+        .form-signin #alert {
+            opacity: 0;
+            pointer-events: none;
+        } */
+
     </style>
+
+    <script src="./scripts/post.js"></script>
 
     <title>MTN SWAMA 2020 Awards Nominations</title>
 </head>
@@ -52,20 +63,26 @@
 
 <body style="background-color:#ffca08;">
     <div class="wrapper">
-        <form action="" class="form-signin">
+        <div class="form-signin">
             <h5 class="form-signin-heading text-center">MTN SWAMA 2020 || Nominations</h5>
+            <div id="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div id="status" ></div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             <img src="./assets/img/mtn_header.png" height="150" width="100%" alt="" srcset="">
-            <input type="text" name="cellphone" placeholder="Cellphone" class="form-control">
+            <input type="text" name="cellphone" id="cellphone" placeholder="Cellphone" class="form-control">
             <select name="category" id="category" class="form-control">
                 <option value="Song of the Year">Song of the Year</option>
                 <option value="Artist of the Year">Artist of the Year</option>
                 <option value="Album of the Year">Album of the Year</option>
                 <option value="Best Group">Best Group</option>
             </select>
-            <input type="text" name="nominee" placeholder="Nominee" class="form-control">
+            <input type="text" id="nominee" name="nominee" placeholder="Nominee" class="form-control">
 
-            <button class="btn btn-primary btn-block">Submit Nomination</button>
-        </form>
+            <input type="submit" onclick="ajax_post()" class="btn btn-primary btn-block" value="Submit Nomination"/>
+        </div>
 
     </div>
 
