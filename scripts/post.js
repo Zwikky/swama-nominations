@@ -1,7 +1,8 @@
 function ajax_post() {
  
     const xhr = new XMLHttpRequest();
-    const url = "http://34.72.209.20/systems/zet/swama/api/receive.php";
+    const url = "http://eyainsurance.co.sz/systems/api/receive.php";
+    // const url = "http://34.72.209.20/systems/zet/swama/api/receive.php";
     // const url = "http://localhost/awards/api/receive.php";
     var cellphone = document.getElementById("cellphone").value;
     var category = document.getElementById("category").value;
