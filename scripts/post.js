@@ -1,7 +1,7 @@
 function ajax_post() {
  
     const xhr = new XMLHttpRequest();
-    const url = "receive.php";
+    const url = "https://zet-systems-inc.000webhostapp.com/api/receive.php";
     // const url = "http://34.72.209.20/systems/zet/swama/api/receive.php";
     // const url = "http://localhost/awards/api/receive.php";
     var cellphone = document.getElementById("cellphone").value;
