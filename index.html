@@ -4,202 +4,96 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <style>
-        img {
+        body {
             font-family: "Nunito";
             display: block;
+            font-weight: 600;
+            font-style: bold;
             margin-left: auto;
             margin-right: auto;
         }
+
+        .wrapper {
+            background: #eee;
+            margin: 20px;
+            border-radius: 5px;
+            border: 1px solid #0e0e0e;
+            box-shadow: #0e0e0e;
+        }
+        .form-signin {
+            max-width: 380px;
+            margin: 0 auto;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+        }
+        .form-signin .form-signin-heading {
+            margin-bottom: 5px;
+        }
+        .form-signin input[type="text"], .form-signin select {
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .form-signin img {
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
     </style>
 
     <title>MTN SWAMA 2020 Awards Nominations</title>
 </head>
-<script src="lib/microapp.js"></script>
-<script>
-
-    /* *********************************************************************
-     * Microapp operational examples. Follow the docs for more detailed info
-     * *********************************************************************/
-
-    function finish() {
-        Ayoba.finish();
-    }
-
-    function sendMessage() {
-        Ayoba.sendMessage(document.getElementById("inputText").value);
-        Ayoba.finish();
-    }
-
-    function composeMessage() {
-        Ayoba.composeMessage(document.getElementById("inputText").value);
-        Ayoba.finish();
-    }
-
-    function sendMedia() {
-        Ayoba.sendMedia('https://i.ytimg.com/vi/d5PP4vIX7P8/maxresdefault.jpg', 'image/jpg');
-    }
-
-    function sendLocation() {
-        Ayoba.sendLocation(document.getElementById("inputTextLat").value, document.getElementById("inputTextLon").value);
-    }
-
-    function getCountry() {
-        var country = Ayoba.getCountry();
-        document.getElementById("inputText").value = country
-        return country
-    }
-
-    function getMsisdn() {
-        var msisdn = Ayoba.getMsisdn();
-        document.getElementById("inputText").value = msisdn
-        return msisdn
-    }
-
-    function getCanSendMessage() {
-        var canSendMessage = Ayoba.getCanSendMessage();
-        document.getElementById("inputText").value = canSendMessage
-        return canSendMessage
-    }
-
-    function getLanguage() {
-        var language = Ayoba.getLanguage();
-        document.getElementById("inputText").value = language
-        return language
-    }
-    
-    function getURLParameter(sParam) {
-        var sPageURL = window.location.search.substring(1);
-        var sURLVariables = sPageURL.split('&');
-        for (var i = 0; i < sURLVariables.length; i++) {
-            var sParameterName = sURLVariables[i].split('=');
-            if (sParameterName[0] == sParam) {
-                return sParameterName[1];
-            }
-        }
-    }
-
-    function getSelfJid() {
-        var selfJid = getURLParameter("jid")
-        document.getElementById("inputText").value = selfJid
-        return selfJid
-    }
-
-    /*
-     * The Ayoba native interface calls this method every time
-     * the app receives a new location event.
-     * 
-     * Remember this listener will only be called when the native
-     * permission is accepted by the user. 
-     * 
-     * In some border cases, also can receive lat=0.0, lon=0.0. Most of
-     * cases, will mean Ayoba cannot retrieve the GPS coordinates.
-     */
-    function onLocationChanged(lat, lon) {
-        document.getElementById("locationInputText").value = lat.concat(", ").concat(lon)
-    }
-
-    /*
-     * The Ayoba native interface calls this method every time
-     * the user profile changes (nickname or avatar)
-     */
-    function onProfileChanged(nickname, avatarPath) {
-        document.getElementById("nicknameInputText").value = nickname
-        document.getElementById("avatarImage").src = avatarPath
-    }
-
-    /*
-     * The Ayoba native interface calls this method every time
-     * the user presence changes (infact, always online)
-     */
-    function onPresenceChanged(presence) {
-        document.getElementById("presenceInputText").value = presence
-    }
-
-    /*
-     * This method should be implemented to retrieve the "sendMedia(...)" result
-     * 
-     * @param {int} responseCode: result code
-     *  0: the location could not be sent
-     *  1: the location has been sent successfully
-     * @param encodedUrl: Base64 encoded media file’s url
-     */
-    function onMediaSentResponse(responseCode, encodedUrl) {
-        document.getElementById("inputText").value = responseCode.concat(" - ").concat(encodedUrl)
-    }
-
-    /*
-     * This method should be implemented to retrieve the "sendLocation(...)" result
-     *
-     * @param {int} responseCode: result code
-     *  0: the location could not be sent
-     *  1: the location has been sent successfully
-     */
-    function onLocationSentResponse(responseCode) {
-        document.getElementById("inputText").value = responseCode
-    }
-</script>
+<!-- <script src="lib/microapp.js"></script> -->
 
 <body style="background-color:#ffca08;">
-    <center>
-        <font color="#000">MTN SWAMA Awards 2020 || Nominations</font>
+    <div class="wrapper">
+        <form action="" class="form-signin">
+            <h5 class="form-signin-heading text-center">MTN SWAMA 2020 || Nominations</h5>
+            <img src="./assets/img/mtn_header.png" height="150" width="100%" alt="" srcset="">
+            <input type="text" name="cellphone" placeholder="Cellphone" class="form-control">
+            <select name="category" id="category" class="form-control">
+                <option value="Song of the Year">Song of the Year</option>
+                <option value="Artist of the Year">Artist of the Year</option>
+                <option value="Album of the Year">Album of the Year</option>
+                <option value="Best Group">Best Group</option>
+            </select>
+            <input type="text" name="nominee" placeholder="Nominee" class="form-control">
+
+            <button class="btn btn-primary btn-block">Submit Nomination</button>
+        </form>
+
+    </div>
+
+
+<!--     
         <img src="./assets/img/mtn_header.png" alt="MTN SWAMA 2020" style="border-radius: 5px;" height="150" width="350">
     </center>
     <br />
+   
     <div style="text-align:center;">
-        <input type="text" id="inputText">
-    </div>
-    <br />
-    <div style="text-align:center;">
-        Location:
-        <input type="text" id="locationInputText">
+        Cellphone:
+        <input type="text" id="cellphone">
     </div>
     <div style="text-align:center;">
-        Profile:
-        <input type="text" id="nicknameInputText">
+        Category:
+        <select type="text" id="category">
+            <option value="Song of the Year">Song of the Year</option>
+            <option value="Album of the Year">Album of the Year</option>
+            <option value="Artist of the Year">Artist of the Year</option>
+            <option value="Music Video of the Year">Music Video of the Year</option>
+        </select>   
     </div>
     <div style="text-align:center;">
-        Presence:
+        Nominee:
         <input type="text" id="presenceInputText">
     </div>
-    <img src="./assets/img/swama_logo.png" style="width:72px; border-color: #fff; border-radius: 5px solid #fff; margin-top: 15px;" />
-    <br />
-    <img style="width:72px;" id="avatarImage" />
-    <br />
-    <div style="text-align:center;">
-        <input type="button" value="Send message" onClick="sendMessage()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="button" value="Compose message" onClick="composeMessage()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="button" value="Finish" onClick="finish()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="button" value="Send media" onClick="sendMedia()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="text" id="inputTextLat" size="10">
-        <input type="text" id="inputTextLon" size="10">
-        <input type="button" value="Send location" onClick="sendLocation()" />
-    </div>
-    <br />
-    <div style="text-align:center;">
-        <input type="button" value="Get MSISDN" onClick="getMsisdn()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="button" value="Get Country" onClick="getCountry()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="button" value="Get CanSendMessage" onClick="getCanSendMessage()" />
-    </div>
-    <div style="text-align:center;">
-        <input type="button" value="Get Language" onClick="getLanguage()" />
-    </div>
-    <div style="text-align:center;">
-    <input type="button" value="Get SelfJid" onClick="getSelfJid()" />
-</div>
+    <button>Submit Nomination</button>
+</div> -->
 </body>
 
 </html>
