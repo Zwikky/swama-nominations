@@ -14,6 +14,7 @@ function ajax_post() {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded, application/json");
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhr.setRequestHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
+    xhr.setRequestHeader("Access-Control-Allow-Headers", "X-Requested-With");
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var return_data = xhr.responseText;

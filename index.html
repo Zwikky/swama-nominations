@@ -86,13 +86,24 @@
         }
 
     </style>
+    <script src="lib/microapp.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+           
+                var msisdn = Ayoba.getMsisdn();
+                var country = Ayoba.getCountry();
+                var number = document.getElementById("number");
+                number.innerHTML = msisdn + ' in ' + country;
+            
+
+        })
+    </script>
 
     <script src="./scripts/post.js"></script>
     <script src="./scripts/load.js"></script>
 
     <title>MTN SWAMA 2020 Awards Nominations</title>
 </head>
-<!-- <script src="lib/microapp.js"></script> -->
 
 <body style="background-color:#ffca08;">
     <div class="wrapper">
@@ -104,6 +115,9 @@
             <ul id="status">
                 <li>Error</li>
             </ul>
+            <div id="number">
+
+            </div>
             <img src="./assets/img/mtn_header.png" height="150" width="100%" alt="" srcset="">
             <input type="text" name="cellphone" id="cellphone" placeholder="Cellphone" class="form-control">
             <div class="form-group">
