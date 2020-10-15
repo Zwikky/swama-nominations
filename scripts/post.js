@@ -7,23 +7,66 @@ function ajax_post() {
     var cellphone = document.getElementById("cellphone").value;
     var category = document.getElementById("category").value;
     var nominee = document.getElementById("nominee").value;
+    var messages = document.getElementById("status");
     var params = "cellphone="+cellphone+"&category="+category+"&nominee="+nominee;
     
     xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded, application/json");
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhr.setRequestHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
-    xhr.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var return_data = xhr.responseText;
-            document.getElementById("status").innerHTML = return_data;
-        }
-        if (xhr.readyState == 1 && xhr.status == 0) {
-            var return_data = xhr.responseText;
-            document.getElementById("status").innerHTML = "Error Nominating, Try Again Later";
+            try {
+                return_data = JSON.parse(return_data);
+            } catch (err) {
+                console.error(err)
+            }
+
+            if (return_data) {
+                console.log(return_data)
+               handleResponse(return_data); 
+            }
+            // document.getElementById("status").innerHTML = return_data;
         }
     }
     xhr.send(params);
     document.getElementById("status").innerHTML = "processing...";
+    messages.style.display = "block"
+            messages.style.color = "orange"
+            messages.style.border = "1px solid orange"
+
+    function handleResponse(res) {
+        if (res.ok) {
+            while(messages.firstChild){
+                messages.removeChild(messages.firstChild);
+            }
+
+            res.messages.forEach((message) => {
+                const li = document.createElement('li');
+                li.textContent = message;
+                messages.appendChild(li);
+            });
+            cellphone = "";
+            nominee = "";
+            messages.style.display = "block"
+            messages.style.color = "green"
+            messages.style.border = "1px solid green"
+        } else {
+            while(messages.firstChild){
+                messages.removeChild(messages.firstChild);
+            }
+
+            res.messages.forEach((message) => {
+                const li = document.createElement('li');
+                li.textContent = message;
+                messages.appendChild(li);
+            });
+            cellphone = "";
+            nominee = "";
+            messages.style.display = "block"
+            messages.style.color = "red"
+            messages.style.border = "1px solid red"
+        }
+    }
 }
