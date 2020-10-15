@@ -28,6 +28,7 @@
         }
         .form-signin {
             max-width: 380px;
+            position: relative;
             margin: 0 auto;
             border: 1px solid #e5e5e5;
             border-radius: 10px;
@@ -54,8 +55,28 @@
         } */
 
     </style>
+<!-- 
+    <script>
+        document.addEventListener('DOMContentLoaded', () =>{
+                    let dropdown = $('#category');
+
+                    dropdown.empty();
+
+                    dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
+                    dropdown.prop('selectedIndex', 0);
+
+                    const url = 'http://localhost/awards/api/categories.json';
+
+                    $.getJSON(url, function (data) {
+                    $.each(data, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.id).text(entry.category));
+                    })
+                 });
+       } );
+    </script> -->
 
     <script src="./scripts/post.js"></script>
+    <script src="./scripts/load.js"></script>
 
     <title>MTN SWAMA 2020 Awards Nominations</title>
 </head>
@@ -73,11 +94,7 @@
               </div>
             <img src="./assets/img/mtn_header.png" height="150" width="100%" alt="" srcset="">
             <input type="text" name="cellphone" id="cellphone" placeholder="Cellphone" class="form-control">
-            <select name="category" id="category" class="form-control">
-                <option value="Song of the Year">Song of the Year</option>
-                <option value="Artist of the Year">Artist of the Year</option>
-                <option value="Album of the Year">Album of the Year</option>
-                <option value="Best Group">Best Group</option>
+            <select id="category" name="category">
             </select>
             <input type="text" id="nominee" name="nominee" placeholder="Nominee" class="form-control">
 
@@ -85,32 +102,6 @@
         </div>
 
     </div>
-
-
-<!--     
-        <img src="./assets/img/mtn_header.png" alt="MTN SWAMA 2020" style="border-radius: 5px;" height="150" width="350">
-    </center>
-    <br />
-   
-    <div style="text-align:center;">
-        Cellphone:
-        <input type="text" id="cellphone">
-    </div>
-    <div style="text-align:center;">
-        Category:
-        <select type="text" id="category">
-            <option value="Song of the Year">Song of the Year</option>
-            <option value="Album of the Year">Album of the Year</option>
-            <option value="Artist of the Year">Artist of the Year</option>
-            <option value="Music Video of the Year">Music Video of the Year</option>
-        </select>   
-    </div>
-    <div style="text-align:center;">
-        Nominee:
-        <input type="text" id="presenceInputText">
-    </div>
-    <button>Submit Nomination</button>
-</div> -->
 </body>
 
 </html>
