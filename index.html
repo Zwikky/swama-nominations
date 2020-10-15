@@ -55,25 +55,6 @@
         } */
 
     </style>
-<!-- 
-    <script>
-        document.addEventListener('DOMContentLoaded', () =>{
-                    let dropdown = $('#category');
-
-                    dropdown.empty();
-
-                    dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
-                    dropdown.prop('selectedIndex', 0);
-
-                    const url = 'http://localhost/awards/api/categories.json';
-
-                    $.getJSON(url, function (data) {
-                    $.each(data, function (key, entry) {
-                        dropdown.append($('<option></option>').attr('value', entry.id).text(entry.category));
-                    })
-                 });
-       } );
-    </script> -->
 
     <script src="./scripts/post.js"></script>
     <script src="./scripts/load.js"></script>
@@ -94,14 +75,16 @@
               </div>
             <img src="./assets/img/mtn_header.png" height="150" width="100%" alt="" srcset="">
             <input type="text" name="cellphone" id="cellphone" placeholder="Cellphone" class="form-control">
-            <select id="category" name="category">
-            </select>
+            
             <input type="text" id="nominee" name="nominee" placeholder="Nominee" class="form-control">
 
             <input type="submit" onclick="ajax_post()" class="btn btn-primary btn-block" value="Submit Nomination"/>
         </div>
 
     </div>
+
+    <select id="category" name="category">
+    </select>
 </body>
 
 </html>
