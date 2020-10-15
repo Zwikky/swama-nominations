@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () =>{
+
+    $("select").select2({
+        tags: "true",
+        placeholder: "Select Category",
+        allowClear: true
+      });
+
 const catagsArray =
 [
     {

@@ -77,16 +77,18 @@
               </div>
             <img src="./assets/img/mtn_header.png" height="150" width="100%" alt="" srcset="">
             <input type="text" name="cellphone" id="cellphone" placeholder="Cellphone" class="form-control">
-            
+            <div class="form-group">
+                <select id="category" data-placeholder="Select a Category" class="form-control js-example-basic-single " needsclick name="category">
+                </select>
+            </div>
+
+                
             <input type="text" id="nominee" name="nominee" placeholder="Nominee" class="form-control">
 
             <input type="submit" onclick="ajax_post()" class="btn btn-primary btn-block" value="Submit Nomination"/>
         </div>
 
     </div>
-
-    <select id="category" class="js-example-basic-single" needsclick name="category">
-    </select>
 </body>
 
 </html>
